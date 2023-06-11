@@ -1,0 +1,29 @@
+/*before running, dox2unix temperature.sas temperature.sas*/
+
+libname mine '/home/kaist/tigerz7/fin514';
+options nocenter;
+
+data mine.temperature1;
+input fahrenheit;
+datalines;
+10
+20
+30
+40
+50
+60
+70
+80
+90
+100
+110
+120
+;
+
+data mine.temperature; set mine.temperature1;
+celsius = (fahrenheit - 32)/1.8;run;
+
+proc print data=mine.temperature; run;
+proc means data=mine.temperature; run;
+
+
